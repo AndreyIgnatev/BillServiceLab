@@ -1,4 +1,4 @@
-package com.aston.home.lab.billservicelab.entity;
+package com.aston.home.lab.billservicelab.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,23 +14,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.util.UUID;
+
 @Entity
-@Table(name = "billservice")
+@Table(name = "accountservice")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public class Account {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
+        private Long id;
 
-    @Column(name = "name")
-    private String name;
+        @Column(name = "user_id")
+        private UUID userId;
 
-    @Column(name = "age")
-    private Long age;
+        @Column(name = "cash_account")
+        private Long cashAccount;
 
-}
+        @Column(name = "status")
+        private Boolean status;
+    }
